@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>2018年各省风电装机容量排行榜</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:800px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var option = {
+					title : {
+						text: '2018年各省风电装机容量排行榜',
+						subtext: '单位/万kW,台湾数据截止到2017年底',
+						itemGap:10,
+						//水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
+						x:'center'
+					},
+                    tooltip: {
+						//鼠标悬浮不显示提示
+                        show: false
+                    },
+
+                    /**legend: {
+                        data:['2018年各省风电装机容量排行榜','单位/万kW']
+                    },*/
+                    xAxis : [
+                        {
+							show: true,
+                            type : 'value',
+							//axisLine: {show:false},
+							axisTick: {show:false},
+							splitLine:{show:false}
+                        }
+                    ],
+                    yAxis : [
+
+						{
+							//'value' 数值轴，适用于连续数据。
+							//'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+							//'time' 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
+							//'log' 对数轴。适用于对数数据。
+                            type : 'category',
+							splitLine:{show:false},
+							//设置是否显示刻度
+							//axisTick: {show:false},
+                            data : [
+									"澳门","香港","西藏","北京","海南","重庆","天津","上海",
+									"台湾","浙江","广西","江西","安徽","四川","青海","福建",
+									"湖北","湖南","广东","贵州","陕西","河南","吉林","黑龙江",
+									"辽宁","云南","江苏","宁夏","山西","山东","甘肃","河北",
+									"新疆","内蒙古"]
+                        }
+                    ],
+					grid: {//其中(x,y)针对左上角图的位置调整，(x2,y2)针对左下角。
+						/**y: 20,
+						x2:5,
+						x:45,
+						y2: 40,*/
+						borderWidth:0//此处去掉那个白色边框
+					},
+
+                    series : [
+                        {
+                            //"name":"销量",
+                            "type":"bar",
+							//设置柱的宽度，要是数据太少，柱子太宽不美观~
+　　　　　　　　　　		"barWidth":10,
+                            "data":[
+									0, 0, 1, 19, 34, 50, 52, 71,
+									81.2, 148, 208, 225, 246, 253, 267, 300, 
+									331, 348, 357, 386, 405, 468, 514, 598,
+									761, 857, 865, 1011, 1043, 1146, 1282, 1391, 
+									1921, 2869],
+							itemStyle: {
+								normal: {
+									//设置柱的颜色，绿色
+									//color:'#4ad2ff',
+									color:'#00CD00',
+									label: {
+										show: true, //开启显示
+										position: 'right', //在上方显示
+										textStyle: { //数值样式
+											color: 'black',
+											fontSize: 12
+										}
+									}
+								}
+							}
+                        }
+                    ]
+
+                };
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>
