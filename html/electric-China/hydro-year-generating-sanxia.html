@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+	   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript">
+	        var dom = document.getElementById("container");
+			var myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			app.title = '折柱混合';
+
+			option = {
+				title : {
+					text: '三峡水电站历年发电量',
+					subtext: 'by tianyan',
+					itemGap:10,
+					//水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
+					x:'center'
+				},
+				tooltip: {
+					trigger: 'axis',
+					show:false,
+					axisPointer: {
+						type: 'cross',
+						crossStyle: {
+							color: '#999'
+						}
+					}
+				},
+				toolbox: {
+					feature: {
+						dataView: {show: true, readOnly: false},
+						magicType: {show: true, type: ['line', 'bar']},
+						restore: {show: true},
+						saveAsImage: {show: true}
+					}
+				},
+				/** legend: {
+					data:['发电量']
+				},*/
+				xAxis: [
+					{
+						type: 'category',
+						data: ['2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018'],
+						axisPointer: {
+							type: 'shadow'
+						}
+					}
+				],
+				yAxis: [
+					{
+						type: 'value',
+						name: '发电量/亿kW.h',
+						min: 0,
+						max: 1100,
+						interval: 200,
+						axisLabel: {
+							formatter: '{value}'
+						}
+					}
+				],
+				series: [
+					{
+						name:'发电量',
+						type:'bar',
+						barWidth:20,
+						data:[86.07,391.59,490.9,492.49, 616.030, 808.12, 794.68, 843.7, 782.93, 981.07, 828.27, 988, 870, 935.33, 976.05, 1016.15],
+						itemStyle: {
+							normal: {
+								//设置柱的颜色，深绿色
+								color:'#66CD00',
+								label: {
+									show: true, //开启显示
+									position: 'top', //在上方显示
+									textStyle: { //数值样式
+										color: 'black',
+										fontSize: 12
+									}
+								}
+							}
+						}
+					}
+				]
+			};
+			
+			if (option && typeof option === "object") {
+				myChart.setOption(option, true);
+			}
+       </script>
+   </body>
+</html>
