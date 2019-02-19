@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+			var option = {
+				title : {
+					text: '2017年西南电网电源结构',
+					subtext: '纯属虚构,核电数据截止到2018年12月底，光电数据截止2018年6月底',
+					x:'center'
+				},
+				tooltip : {
+					trigger: 'axis'
+				},
+				legend: {
+					data:['火电','水电','风电','光电','核电'],
+					x:'left'
+				},
+				toolbox: {
+					show : true,
+					feature : {
+						mark : {show: true},
+						dataView : {show: true, readOnly: false},
+						magicType : {show: true, type: ['line', 'bar']},
+						restore : {show: true},
+						saveAsImage : {show: true}
+					}
+				},
+				calculable : true,
+				xAxis : [
+					{
+						type : 'category',
+						axisTick: {show:false},
+						splitLine:{show:false},
+						data : ['重庆电网','四川电网','西藏电网']
+					}
+				],
+				yAxis : [
+					{
+						type : 'value',
+						splitLine:{show:false}
+					}
+				],
+				grid: {//其中(x,y)针对左上角图的位置调整，(x2,y2)针对左下角。
+					/**y: 20,
+					x2:5,
+					x:45,
+					y2: 40,*/
+					borderWidth:0//此处去掉那个白色边框
+				},
+				series : [
+					{
+						name:'火电',
+						type:'bar',
+						barWidth:16,
+						/*多个并排柱子设置柱子之间的间距*/
+  	                    barCategoryGap:'50%',
+						data:[1539, 1662, 40],
+						itemStyle: {
+							normal: {
+								//设置柱的颜色，红色
+								color:'#FF0000',
+								label: {
+									show: true, //开启显示
+									position: 'top', //在上方显示
+									textStyle: { //数值样式
+										color: 'black',
+										fontSize: 12
+									}
+								}
+							}
+						}
+					},
+					{
+						name:'水电',
+						type:'bar',
+						barWidth:16,
+						/*多个并排柱子设置柱子之间的间距*/
+  	                    barCategoryGap:'50%',
+						data:[735, 7714, 158],
+						itemStyle: {
+							normal: {
+								//设置柱的颜色，蓝色
+								color:'#836FFF',
+								label: {
+									show: true, //开启显示
+									position: 'top', //在上方显示
+									textStyle: { //数值样式
+										color: 'black',
+										fontSize: 12
+									}
+								}
+							}
+						}
+					},
+					{
+						name:'风电',
+						type:'bar',
+						barWidth:16,
+						/*多个并排柱子设置柱子之间的间距*/
+  	                    barCategoryGap:'50%',
+						data:[33, 210, 0.8],
+						itemStyle: {
+							normal: {
+								//设置柱的颜色，绿色
+								color:'#66CD00',
+								label: {
+									show: true, //开启显示
+									position: 'top', //在上方显示
+									textStyle: { //数值样式
+										color: 'black',
+										fontSize: 12
+									}
+								}
+							}
+						}
+					},
+					{
+						name:'光电',
+						type:'bar',
+						barWidth:16,
+						/*多个并排柱子设置柱子之间的间距*/
+  	                    barCategoryGap:'50%',
+						data:[42, 138, 84],
+						itemStyle: {
+							normal: {
+								//设置柱的颜色，桔色
+								color:'	#EEC900',
+								label: {
+									show: true, //开启显示
+									position: 'top', //在上方显示
+									textStyle: { //数值样式
+										color: 'black',
+										fontSize: 12
+									}
+								}
+							}
+						}
+					},
+					{
+						name:'核电',
+						type:'bar',
+						barWidth:16,
+						/*多个并排柱子设置柱子之间的间距*/
+  	                    barCategoryGap:'50%',
+						data:[0, 0, 0],
+						itemStyle: {
+							normal: {
+								//设置柱的颜色，紫色
+								color:'#FF00FF',
+								label: {
+									show: true, //开启显示
+									position: 'top', //在上方显示
+									textStyle: { //数值样式
+										color: 'black',
+										fontSize: 12
+									}
+								}
+							}
+						}
+					}
+				]
+			};
+       
+            // 为echarts对象加载数据 
+            myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>
