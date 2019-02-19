@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>China Power</title>
+
+	<link rel="stylesheet" type="text/css" href="css/nav.css">
+	<link rel="stylesheet" type="text/css" href="font/iconfont.css">
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/nav.js"></script>
+</head>
+<body>
+<!-- 顶部菜单（来自bootstrap官方Demon）==================================== -->
+<nav style="width:100%;height:5%;float:left">
+    <div  >
+	    <a href="index.html" style="font-size:20px;font-weight:bold;font-family:STXingkai;color:#000000">中国电力管理系统</a>
+    </div>
+</nav>
+<!-- 左侧菜单选项========================================= -->
+<div class="nav" style=" float:left;height:90%;">
+	<div class="nav-top">
+		<div id="mini" style="border-bottom:1px solid 
+		(255,255,255,.1)"><img src="images/mini.png" ></div>
+	</div>
+	<ul>
+		<li class="nav-item">
+			<a href="javascript:;"><i class="my-icon nav-icon icon_2"></i><span>电网概况</span><i class="my-icon nav-more"></i></a>
+			<ul>
+				<li><a href="./html/net-capacity-bar/net-capatity-sevennet.html" target="menuFrame"><span>电网总览</span></a></li>
+				<li><a href="./html/net-capacity-bar/net-capatity-dongbei.html" target="menuFrame"><span>东北电网</span></a></li>
+				<li><a href="./html/net-capacity-bar/net-capatity-huabei.html" target="menuFrame"><span>华北电网</span></a></li>
+				<li><a href="./html/net-capacity-bar/net-capatity-xibei.html" target="menuFrame"><span>西北电网</span></a></li>
+				<li><a href="./html/net-capacity-bar/net-capatity-huadong.html" target="menuFrame"><span>华东电网</span></a></li>
+				<li><a href="./html/net-capacity-bar/net-capatity-huazhong.html" target="menuFrame"><span>华中电网</span></a></li>
+				<li><a href="./html/net-capacity-bar/net-capatity-xinan.html" target="menuFrame"><span>西南电网</span></a></li>
+				<li><a href="./html/net-capacity-bar/net-capatity-nanfang.html" target="menuFrame"><span>南方电网</span></a></li>
+			</ul>
+		</li>
+		<li class="nav-item">
+			<a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span>各能源分省排名</span><i class="my-icon nav-more"></i></a>
+			<ul>
+				<li><a href="./html/type-province-rank/capacity-province-rank-Fire.html" target="menuFrame"><span>火电排名</span></a></li>
+				<li><a href="./html/type-province-rank/capacity-province-rank-Hydro.html" target="menuFrame"><span>水电排名</span></a></li>
+				<li><a href="./html/type-province-rank/capacity-province-rank-Wind.html" target="menuFrame"><span>风电排名</span></a></li>
+				<li><a href="./html/type-province-rank/capacity-province-rank-Solar.html" target="menuFrame"><span>光电排名</span></a></li>
+				<li><a href="./html/type-province-rank/capacity-province-rank-Nuclear.html" target="menuFrame"><span>核电排名</span></a></li>
+			</ul>
+		</li>
+		<li class="nav-item">
+			<a href="javascript:;"><i class="my-icon nav-icon icon_6"></i><span>电源分布图</span><i class="my-icon nav-more"></i></a>
+			<ul>
+				<li><a href="./html/map-analog-ge/map-shandong-analog-coal.html" target="menuFrame"><span>山东煤电分布图</span></a></li>
+				<li><a href="./html/map-analog-ge/map-tianjin-analog-coal.html" target="menuFrame"><span>天津煤电分布图</span></a></li>
+			</ul>
+		</li>
+		<li class="nav-item">
+			<a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>电力结构</span><i class="my-icon nav-more"></i></a>
+			<ul>
+				<li><a href="./html/electric-China/electric-type-China.html" target="menuFrame"><span>电源结构图</span></a></li>
+				<li><a href="./html/electric-China/electric-volume-China.html" target="menuFrame"><span>发电量来源</span></a></li>
+				<li><a href="./html/electric-China/hydro-year-generating-sanxia.html" target="menuFrame"><span>三峡历年发电量</span></a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<!-- 右侧内容展示==================================================   -->   
+<div id="page_content" style="width:83%;height:90%;float:left">
+    <iframe id="menuFrame" name="menuFrame" width="100%" height="100%">
+    </iframe>
+</div>
+
+</body>
+</html>
